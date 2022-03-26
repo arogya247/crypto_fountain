@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
+import { CoinTable } from './CoinTable';
 
 export const Dashboard = () => {
 
@@ -9,6 +10,7 @@ export const Dashboard = () => {
     callCoinApi();
   }, [])
 
+  // function to call the coin api and set the data 
   const callCoinApi = async() => {
     let response = await axios.get("https://cors-anywhere.herokuapp.com/https://api.coinranking.com/v2/coins", {
       headers: {
@@ -21,9 +23,47 @@ export const Dashboard = () => {
 
   console.log("data", data)
 
+  const tableData = data.coins;
+
+  const tableColumns = [
+    {
+      Header: "S.No.",
+      id: "row",
+      Cell: (props) => {
+        return <>{props.row.index + 1}</>
+      },
+      disableSortBy: true
+    },
+    {
+      Header: "Rank",
+      accessor: "rank"
+    },
+    {
+      Header: "Name",
+      accessor: "name",
+      width: 200
+    },
+    {
+      Header: "Symbol",
+      accessor: "symbol",
+      disableSortBy: true
+    },
+    {
+      Header: "Price",
+      accessor: "price",
+      width: 250
+    },
+    {
+      Header: "Price Change",
+      accessor: "change",
+      disableSortBy: true,
+      width: 200
+    }
+  ]
+
   return (
-    <div>
-        Hey
+    <div style={{margin: '0 auto', width: '80%'}}>
+      {data.length!==0 && <CoinTable tableData={tableData} tableColumns={tableColumns} />}
     </div>
   )
 }
