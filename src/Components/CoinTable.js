@@ -22,13 +22,13 @@ export const CoinTable = ({tableData, tableColumns}) => {
   const WrappedTableRow = styled(Tr)`
     td {
       :last-child {
-        border-right: 2px solid black;
+        border-right: 2px solid #1c243c;
       }
     }
   `
 
   const WrappedTableData = styled(Td)`
-    border: 1px solid black;
+    border: 1px solid #1c243c;
     text-align: center;
     padding: 1em;
   `
@@ -43,7 +43,7 @@ export const CoinTable = ({tableData, tableColumns}) => {
               const triangleComponent = column.isSortedDesc ?
                 (<TriangleDownIcon aria-label='sorted descending' marginLeft='.2em' />)
                 : (<TriangleUpIcon aria-label='sorted ascending' marginLeft='.2em' />)
-              return <Th {...column.getHeaderProps(column.getSortByToggleProps())} color="white" backgroundColor="green" fontSize='1.2em' textAlign='center' padding='1em 0' border='none'>
+              return <Th {...column.getHeaderProps(column.getSortByToggleProps())} color="white" backgroundColor="#00ccc2" fontSize='1.2em' textAlign='center' padding='1em 0' border='none'>
                 {column.render("Header")}
                 <chakra.span>
                   {
