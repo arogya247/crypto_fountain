@@ -17,12 +17,17 @@ export const CoinTable = ({tableData, tableColumns}) => {
     getTableBodyProps,
     headerGroups,
     page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
     prepareRow,
     state,
     setGlobalFilter
   } = useTable({ columns, data}, useGlobalFilter, useSortBy, usePagination, useFlexLayout)
 
-  const { globalFilter } = state
+  const { pageIndex, globalFilter } = state
 
   const WrappedTableRow = styled(Tr)`
     td {
@@ -79,6 +84,16 @@ export const CoinTable = ({tableData, tableColumns}) => {
         })}
       </Tbody>
     </Table>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
+      <span>
+        Page: {' '}
+        <strong>
+          {pageIndex + 1} of {pageOptions.length}
+        </strong>
+      </span>
+      <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
+      <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
+    </div>
     </>
   )
 }
