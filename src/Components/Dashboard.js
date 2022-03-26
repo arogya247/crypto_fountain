@@ -6,6 +6,12 @@ export const Dashboard = ({data, setData}) => {
 
   useEffect(() => {
     callCoinApi();
+
+    const interval=setInterval(()=>{
+      callCoinApi()
+     },20000)
+        
+    return()=>clearInterval(interval)
   }, [])
 
   // function to call the coin api and set the data 
