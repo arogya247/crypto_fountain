@@ -1,9 +1,10 @@
 import React, {useMemo} from 'react';
-import { Column, useFlexLayout, useSortBy, useTable } from 'react-table';
+import { Column, useFlexLayout, useSortBy, useTable, useGlobalFilter } from 'react-table';
 import { Td, Tr, Th, Table, Tbody, Thead } from '@chakra-ui/table'
 import { chakra } from '@chakra-ui/system'
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
 import styled from '@emotion/styled'
+import { Search } from './Search';
 
 export const CoinTable = ({tableData, tableColumns}) => {
 
@@ -16,8 +17,12 @@ export const CoinTable = ({tableData, tableColumns}) => {
     getTableBodyProps,
     headerGroups,
     rows,
-    prepareRow
-  } = useTable({ columns, data}, useSortBy, useFlexLayout)
+    prepareRow,
+    state,
+    setGlobalFilter
+  } = useTable({ columns, data}, useGlobalFilter, useSortBy, useFlexLayout)
+
+  const { globalFilter } = state
 
   const WrappedTableRow = styled(Tr)`
     td {
@@ -34,6 +39,8 @@ export const CoinTable = ({tableData, tableColumns}) => {
   `
 
   return (
+    <>
+    <Search filter={globalFilter} setFilter={setGlobalFilter} />
     <Table {...getTableProps()} variant='striped' colorScheme='teal' marginTop='3em'>
       <Thead>
         {headerGroups.map(headerGroup => {
@@ -72,5 +79,6 @@ export const CoinTable = ({tableData, tableColumns}) => {
         })}
       </Tbody>
     </Table>
+    </>
   )
 }
