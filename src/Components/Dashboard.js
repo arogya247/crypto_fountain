@@ -2,9 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import { CoinTable } from './CoinTable';
 
-export const Dashboard = () => {
-
-  const [data, setData] = useState([])
+export const Dashboard = ({data, setData}) => {
 
   useEffect(() => {
     callCoinApi();
