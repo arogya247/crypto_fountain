@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import { Column, useFlexLayout, useSortBy, useTable, useGlobalFilter } from 'react-table';
+import { Column, useFlexLayout, useSortBy, useTable, useGlobalFilter, usePagination } from 'react-table';
 import { Td, Tr, Th, Table, Tbody, Thead } from '@chakra-ui/table'
 import { chakra } from '@chakra-ui/system'
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
@@ -16,11 +16,11 @@ export const CoinTable = ({tableData, tableColumns}) => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
+    page,
     prepareRow,
     state,
     setGlobalFilter
-  } = useTable({ columns, data}, useGlobalFilter, useSortBy, useFlexLayout)
+  } = useTable({ columns, data}, useGlobalFilter, useSortBy, usePagination, useFlexLayout)
 
   const { globalFilter } = state
 
@@ -65,7 +65,7 @@ export const CoinTable = ({tableData, tableColumns}) => {
         })}
       </Thead>
       <Tbody {...getTableBodyProps()}>
-        {rows.map(row => {
+        {page.map(row => {
           prepareRow(row)
           return (
             <WrappedTableRow {...row.getRowProps()}>
