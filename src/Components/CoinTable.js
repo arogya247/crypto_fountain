@@ -22,6 +22,8 @@ export const CoinTable = ({tableData, tableColumns}) => {
     canNextPage,
     canPreviousPage,
     pageOptions,
+    gotoPage,
+    pageCount,
     prepareRow,
     state,
     setGlobalFilter
@@ -91,8 +93,10 @@ export const CoinTable = ({tableData, tableColumns}) => {
           {pageIndex + 1} of {pageOptions.length}
         </strong>
       </span>
+      <button onClick={() => gotoPage(0)} disabled={!canPreviousPage} >{'<<'}</button>
       <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
       <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
+      <button onClick={() => gotoPage(pageCount-1)} disabled={!canNextPage} >{'>>'}</button>
     </div>
     </>
   )
