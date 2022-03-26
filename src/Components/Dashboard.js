@@ -47,15 +47,21 @@ export const Dashboard = ({data, setData}) => {
       disableSortBy: true
     },
     {
-      Header: "Price",
+      Header: "Price($)",
       accessor: "price",
-      width: 250
+      width: 250,
+      Cell: (props) => {
+        return <>{`$ ${props.value}`}</>
+      }
     },
     {
       Header: "Price Change",
       accessor: "change",
       disableSortBy: true,
-      width: 200
+      width: 200,
+      Cell: (props) => {
+        return <>{`${props.value} %`}</>
+      }
     }
   ]
 
