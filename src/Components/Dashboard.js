@@ -25,7 +25,7 @@ export const Dashboard = ({data, setData}) => {
     setData(response.data.data)
   }
 
-  console.log("data", data)
+  //console.log("data", data)
 
   const tableData = data.coins;
 
