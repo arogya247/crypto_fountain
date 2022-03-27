@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { CoinTable } from './CoinTable';
 
 export const Dashboard = ({data, setData}) => {
@@ -9,7 +9,7 @@ export const Dashboard = ({data, setData}) => {
 
     const interval=setInterval(()=>{
       callCoinApi()
-     },20000)
+     },10000)
         
     return()=>clearInterval(interval)
   }, [])
@@ -25,10 +25,10 @@ export const Dashboard = ({data, setData}) => {
     setData(response.data.data)
   }
 
-  //console.log("data", data)
-
+  // declare the data for table as data.coins
   const tableData = data.coins;
 
+  // declare the columns/headers for the table
   const tableColumns = [
     {
       Header: "S.No.",
@@ -73,7 +73,7 @@ export const Dashboard = ({data, setData}) => {
 
   return (
     <div style={{margin: '0 auto', width: '80%'}}>
-      {data.length!==0 && <CoinTable tableData={tableData} tableColumns={tableColumns} />}
+      <CoinTable tableData={tableData} tableColumns={tableColumns} />
     </div>
   )
 }
