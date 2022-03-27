@@ -1,0 +1,30 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 2em;
+    margin-bottom: 2em;
+}
+
+@media screen and (max-width: 600px){
+    .pagination {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.pagination-span{
+    color: white;
+    background-color: #00ccc2;
+    padding: .6em;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.pagination-input{
+    width: 50px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    text-align: center;
+}
