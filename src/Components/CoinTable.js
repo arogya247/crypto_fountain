@@ -6,6 +6,7 @@ import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
 import styled from '@emotion/styled'
 import { Search } from './Search';
 import './CoinTable.css'
+import { Pagination } from './Pagination';
 
 export const CoinTable = ({tableData, tableColumns}) => {
 
@@ -44,12 +45,13 @@ export const CoinTable = ({tableData, tableColumns}) => {
     border: 1px solid #1c243c;
     text-align: center;
     padding: 1em;
+    font-weight: 500;
   `
 
   return (
     <>
     <Search filter={globalFilter} setFilter={setGlobalFilter} />
-    <Table {...getTableProps()} variant='striped' colorScheme='teal' marginTop='3em'>
+    <Table {...getTableProps()} marginTop='3em'>
       <Thead>
         {headerGroups.map(headerGroup => {
           return <Tr {...headerGroup.getHeaderGroupProps()} marginBottom='1.5em'>
@@ -87,29 +89,10 @@ export const CoinTable = ({tableData, tableColumns}) => {
         })}
       </Tbody>
     </Table>
-    <div className="pagination" style={{display: 'flex', justifyContent: 'center', gap: '20px', padding: '2em', marginBottom: '2em'}}>
-      <span style={{color: 'white', backgroundColor: "#00ccc2", padding: '1em', borderRadius: '10px'}}>
-        Page: {' '}
-        <strong>
-          {pageIndex + 1} of {pageOptions.length}
-        </strong>
-      </span>
-      <span style={{color: 'white', backgroundColor: "#00ccc2", padding: '1em', borderRadius: '10px' }}>
-        Go to Page: {' '}
-        <input type="number" defaultValue={pageIndex+1} outline='none'
-        onChange={e => {
-          const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
-          gotoPage(pageNumber)
-        }}
-        style={{width: '50px', border: 'none', borderRadius: '5px', textAlign: 'center'}}/>
-      </span>
-      <div style={{display: 'flex', borderRadius: '10px', gap: '.5em'}}>
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage} >{'<<'}</button>
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>Prev</button>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
-        <button onClick={() => gotoPage(pageCount-1)} disabled={!canNextPage} >{'>>'}</button>
-      </div>
-    </div>
+    <Pagination pageIndex={pageIndex} pageOptions={pageOptions} gotoPage={gotoPage} 
+                nextPage={nextPage} previousPage={previousPage} canNextPage={canNextPage}
+                canPreviousPage={canPreviousPage}
+    />
     </>
   )
 }
