@@ -1,0 +1,14 @@
+.search-input{
+    outline: none;
+    border: 0;
+    border-bottom: 2px solid black;
+    font-size: 1.1em;
+}
+
+.search-label{
+    color: white;
+    font-weight: 500;
+    padding: .5em;
+    background-color: #00ccc2;
+    border-radius: 5px;
+}

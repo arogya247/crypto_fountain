@@ -1,16 +1,14 @@
 import React from 'react'
+import './Search.css'
 
 export const Search = ({filter, setFilter}) => {
 
-
   return (
-    <span style={{display: 'flex', gap: '10px'}}>
-      <div 
-      style={{color: 'white', padding: '.5em', 
-              backgroundColor: '#00ccc2', borderRadius: '5px'}}>
+    <span style={{display: 'flex', gap: '10px', backgroundColor: 'none'}}>
+      <div className='search-label'>
         Search {' '}
       </div>
-      <input value={filter || ''}
+      <input className='search-input' value={filter || ''} placeholder="Enter a keyword..."
       onChange={e => setFilter(e.target.value)}
       />
     </span>
