@@ -9,7 +9,7 @@ export const Dashboard = ({data, setData}) => {
 
     const interval=setInterval(()=>{
       callCoinApi()
-     },10000)
+     },20000)
         
     return()=>clearInterval(interval)
   }, [])
