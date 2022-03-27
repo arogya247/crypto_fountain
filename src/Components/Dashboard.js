@@ -73,7 +73,7 @@ export const Dashboard = ({data, setData}) => {
 
   return (
     <div style={{margin: '0 auto', width: '80%'}}>
-      <CoinTable tableData={tableData} tableColumns={tableColumns} />
+      {data.length!==0 && <CoinTable tableData={tableData} tableColumns={tableColumns} />}
     </div>
   )
 }

@@ -38,6 +38,9 @@ export const CoinTable = ({tableData, tableColumns}) => {
       :last-child {
         border-right: 2px solid #1c243c;
       }
+      :first-of-type {
+        border-left: 2px solid #1c243c;
+      }
     }
   `
 
