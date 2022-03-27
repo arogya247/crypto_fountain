@@ -87,7 +87,7 @@ export const CoinTable = ({tableData, tableColumns}) => {
         })}
       </Tbody>
     </Table>
-    <div style={{display: 'flex', justifyContent: 'center', gap: '20px', padding: '2em', marginBottom: '2em'}}>
+    <div className="pagination" style={{display: 'flex', justifyContent: 'center', gap: '20px', padding: '2em', marginBottom: '2em'}}>
       <span style={{color: 'white', backgroundColor: "#00ccc2", padding: '1em', borderRadius: '10px'}}>
         Page: {' '}
         <strong>

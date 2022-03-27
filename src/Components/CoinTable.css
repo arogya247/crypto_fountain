@@ -12,3 +12,11 @@ button:hover{
     background-color: aqua;
     transform: scale(1.1);
 }
+
+@media screen and (max-width: 600px){
+    .pagination {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
